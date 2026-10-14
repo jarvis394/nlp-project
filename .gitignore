@@ -9,10 +9,12 @@ wheels/
 # Virtual environments
 .venv
 
+# Jupyter autosave copies
+.ipynb_checkpoints/
+
 # Secrets & generated data
 .env
 
 # Keep collected sheets (*.xlsx) in git
 data/raw/*
 !data/raw/*.xlsx
-outputs/

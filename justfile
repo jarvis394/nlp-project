@@ -26,6 +26,10 @@ collect region="us" location="" label="":
 collect-ddgs region="us-en" engine="yahoo" label="":
     uv run collect -p ddgs -r {{region}} -e {{engine}} --label "{{label}}" --delay 2
 
+# open the main notebook in JupyterLab
+notebook:
+    uv run jupyter lab notebooks/main.ipynb
+
 # list collected runs
 runs:
     @ls -1t data/raw/*.xlsx 2>/dev/null || echo "no runs yet"

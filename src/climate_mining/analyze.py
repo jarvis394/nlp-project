@@ -73,7 +73,9 @@ def fetch_text(url: str) -> str | None:
             url,
             timeout=20,
             follow_redirects=True,
-            headers={"User-Agent": "climate-mining/0.1 (student NLP project; https://github.com/jarvis394/nlp-project)"},
+            headers={
+                "User-Agent": "climate-mining/0.1 (student NLP project; https://github.com/jarvis394/nlp-project)"
+            },
         )
         r.raise_for_status()
     except httpx.HTTPError:
@@ -115,7 +117,9 @@ def load_cache(path: Path) -> dict[str, dict]:
 def main(argv: list[str] | None = None) -> None:
     load_dotenv()
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--run", type=Path, help="xlsx in data/raw (default: newest serpapi)")
+    p.add_argument(
+        "--run", type=Path, help="xlsx in data/raw (default: newest serpapi)"
+    )
     p.add_argument("--ranks", help="comma-separated ranks, e.g. 1,10,50,100")
     p.add_argument("--limit", type=int, help="only the first N results")
     a = p.parse_args(argv)
@@ -125,7 +129,9 @@ def main(argv: list[str] | None = None) -> None:
         raise SystemExit("GEMINI_API_KEY missing: add it to .env")
     model = os.environ.get("GEMINI_MODEL", MODEL)
 
-    run = a.run or next(r for r in sorted(RAW.glob("*.xlsx"), reverse=True) if "_serpapi_" in r.name)
+    run = a.run or next(
+        r for r in sorted(RAW.glob("*.xlsx"), reverse=True) if "_serpapi_" in r.name
+    )
     df = pd.read_excel(run, sheet_name="snippets").sort_values("rank")
     if a.ranks:
         df = df[df["rank"].isin({int(x) for x in a.ranks.split(",")})]
@@ -155,7 +161,9 @@ def main(argv: list[str] | None = None) -> None:
             cache[row.url] = rec
             cache_file.write(json.dumps(rec, ensure_ascii=False) + "\n")
             cache_file.flush()
-            print(f"#{row.rank} [{source}] stance={res['stance']:+.2f} refs={res['reference_quality']}")
+            print(
+                f"#{row.rank} [{source}] stance={res['stance']:+.2f} refs={res['reference_quality']}"
+            )
             time.sleep(DELAY)
 
     out = pd.DataFrame(sorted(cache.values(), key=lambda r: r["rank"]))

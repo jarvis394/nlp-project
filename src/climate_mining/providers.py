@@ -146,7 +146,7 @@ class DdgsProvider(Provider):
     def fetch_page(self, query: str, page: int) -> list[tuple[str, str, str]]:
         from ddgs.exceptions import DDGSException
 
-        # Engines sometimes return a hit fallback page, retry before giving up
+        # Engines sometimes return a short or empty page; retry before giving up
         hits = []
         for attempt in range(3):
             try:

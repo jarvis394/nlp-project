@@ -51,9 +51,8 @@ def main(argv: list[str] | None = None) -> None:
 
     started_time = datetime.now(UTC)
     timestamp = started_time.astimezone().strftime("%Y%m%d-%H%M%S")
-    # Choosing provider class
     cls = PROVIDERS[a.provider]
-    # We need a temp folder for SerpAPI results
+    # SerpAPI keeps the raw JSON of every page it fetched
     extra = (
         {"temp_dir": RAW / a.provider / timestamp} if a.provider == "serpapi" else {}
     )
@@ -84,7 +83,6 @@ def main(argv: list[str] | None = None) -> None:
     out = a.out or RAW / f"{timestamp}_{re.sub(r'[^A-Za-z0-9_-]+', '-', tag)}.xlsx"
     out.parent.mkdir(parents=True, exist_ok=True)
 
-    # Write result to excel sheet
     with pd.ExcelWriter(out) as xw:
         pd.DataFrame(map(asdict, results)).to_excel(
             xw, sheet_name="snippets", index=False

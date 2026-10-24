@@ -19,10 +19,12 @@ dependencies = [
     "thefuzz>=0.22.1",
     "vadersentiment>=3.3.2",
     "wordcloud>=1.9.6",
+    "trafilatura",
 ]
 
 [project.scripts]
 collect = "climate_mining.collect:main"
+analyze = "climate_mining.analyze:main"
 
 [build-system]
 requires = ["uv_build>=0.13.1,<0.14.0"]

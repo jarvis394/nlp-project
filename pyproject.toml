@@ -20,6 +20,7 @@ dependencies = [
     "vadersentiment>=3.3.2",
     "wordcloud>=1.9.6",
     "trafilatura",
+    "scikit-learn>=1.9.1",
 ]
 
 [project.scripts]

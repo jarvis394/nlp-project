@@ -1,0 +1,148 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    border-color 180ms var(--ease-out),
+    box-shadow 180ms var(--ease-out),
+    scale 140ms var(--ease-out),
+    opacity 180ms var(--ease-out);
+}
+
+.card:active {
+  scale: 0.99;
+}
+
+.card[data-dim="true"] {
+  opacity: 0.6;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    border-color: var(--border-strong);
+    box-shadow: var(--shadow-pop);
+    opacity: 1;
+  }
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 540;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+}
+
+.domain {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink-3);
+  font-size: 12.5px;
+}
+
+.body {
+  margin: 0;
+  color: var(--ink-2);
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.footer {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 3), 1fr);
+  gap: 14px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--grid);
+}
+
+.meterLabel {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  color: var(--ink-3);
+  font-size: 11.5px;
+}
+
+.meterLabel span {
+  color: var(--ink-2);
+}
+
+.pips {
+  display: flex;
+  gap: 3px;
+}
+
+.pip {
+  flex: 1;
+  height: 6px;
+  border-radius: 2px;
+  background: var(--grid);
+}
+
+.bar {
+  position: relative;
+  height: 6px;
+  border-radius: 2px;
+  background: var(--grid);
+}
+
+/* Zero mark of a -1..+1 bar */
+.bar::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -3px;
+  bottom: -3px;
+  width: 1px;
+  background: var(--ink-3);
+}
+
+.bar i {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 2px;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.count {
+  color: var(--ink-3);
+  font-size: 13px;
+}

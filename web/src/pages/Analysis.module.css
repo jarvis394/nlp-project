@@ -1,0 +1,48 @@
+.meters {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.kv {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 10px 16px;
+  margin: 0;
+  font-size: 13px;
+}
+
+.kv dt {
+  color: var(--ink-3);
+}
+
+.kv dd {
+  margin: 0;
+}
+
+.list {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--ink-2);
+}
+
+.list li + li {
+  margin-top: 6px;
+}
+
+.plain {
+  margin: 0;
+}
+
+.muted {
+  color: var(--ink-3);
+}
+
+.rationale {
+  margin: 10px 0 0;
+  color: var(--ink-2);
+}
+
+.url {
+  word-break: break-all;
+}

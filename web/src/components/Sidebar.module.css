@@ -1,0 +1,130 @@
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 28px 20px 20px;
+  background: var(--sidebar);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 8px;
+}
+
+.mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  background: var(--ink);
+  color: #fff;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 8px;
+}
+
+.hint {
+  color: var(--ink-3);
+  font-size: 12.5px;
+}
+
+.rangeRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.rangeValue {
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 9px 10px;
+  border: 0;
+  background: none;
+  border-radius: var(--radius-sm);
+  color: var(--ink-2);
+  font-weight: 450;
+  text-align: left;
+  cursor: pointer;
+  transition: color 160ms var(--ease-out);
+}
+
+.item > :not(.pill) {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.item:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.item[data-active="true"] {
+  color: var(--ink);
+}
+
+.pill {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  box-shadow:
+    0 0 0 1px var(--border),
+    0 1px 2px rgb(29 29 32 / 0.05);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .item:not(:disabled):hover {
+    color: var(--ink);
+  }
+}
+
+@media (max-width: 860px) {
+  .sidebar {
+    position: static;
+    height: auto;
+  }
+}
+
+/* Pinned to the bottom of the sidebar */
+.collect {
+  margin-top: auto;
+}

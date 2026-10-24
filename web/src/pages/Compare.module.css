@@ -1,0 +1,118 @@
+.runs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 160ms var(--ease-out),
+    scale 140ms var(--ease-out);
+}
+
+.toggle:active {
+  scale: 0.985;
+}
+
+.toggle[data-on="true"] {
+  border-color: var(--ink);
+}
+
+.matrix {
+  display: grid;
+  gap: 4px;
+  align-items: center;
+}
+
+.matrixCell {
+  display: grid;
+  place-items: center;
+  height: 56px;
+  border-radius: 8px;
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.matrixLabel {
+  color: var(--ink-2);
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.domains {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: rank;
+  font-size: 13px;
+}
+
+.domains li {
+  display: flex;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--grid);
+  counter-increment: rank;
+}
+
+.domains li::before {
+  content: counter(rank);
+  width: 20px;
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 11.5px;
+}
+
+.shared {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.unique {
+  color: var(--ink-3);
+}
+
+.swatch {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 8px;
+  border-radius: 3px;
+  flex-shrink: 0;
+  vertical-align: baseline;
+}
+
+.toggle .swatch {
+  margin-right: 0;
+}
+
+.runName {
+  display: block;
+  font-weight: 500;
+}
+
+.runDate {
+  display: block;
+  color: var(--ink-3);
+  font-size: 12px;
+}
+
+.domainCols {
+  display: grid;
+  gap: 20px;
+}
+
+.domainCols .domains {
+  margin-top: 10px;
+}

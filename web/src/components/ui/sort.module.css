@@ -1,0 +1,56 @@
+.control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.select {
+  width: 200px;
+}
+
+.header {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: color 160ms var(--ease-out);
+}
+
+.header[data-active="true"] {
+  color: var(--ink);
+}
+
+/* Shown only on the active column, so the arrow doesn't clutter the row */
+.arrow {
+  opacity: 0;
+  transition:
+    opacity 160ms var(--ease-out),
+    rotate 200ms var(--ease-out);
+}
+
+.header[data-active="true"] .arrow {
+  opacity: 1;
+}
+
+.header[data-dir="asc"] .arrow {
+  rotate: 180deg;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .header:hover {
+    color: var(--ink);
+  }
+
+  .header:hover .arrow {
+    opacity: 0.5;
+  }
+
+  .header[data-active="true"]:hover .arrow {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,39 @@
+.control {
+  display: flex;
+  align-items: center;
+  height: 20px;
+  touch-action: none;
+  cursor: pointer;
+}
+
+.track {
+  position: relative;
+  width: 100%;
+  height: 4px;
+  border-radius: 99px;
+  background: var(--border-strong);
+}
+
+.indicator {
+  border-radius: 99px;
+  background: var(--ink);
+}
+
+.thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 1px 3px rgb(29 29 32 / 0.15);
+  transition: scale 140ms var(--ease-out);
+}
+
+.thumb[data-dragging] {
+  scale: 1.12;
+}
+
+.thumb:has(:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}

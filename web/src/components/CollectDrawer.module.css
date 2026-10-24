@@ -1,0 +1,35 @@
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: var(--ink-2);
+  font-size: 13px;
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+.hint {
+  color: var(--ink-3);
+  font-size: 12.5px;
+}
+
+.log {
+  margin: 0;
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  background: #1d1d20;
+  color: #e8e8ec;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}

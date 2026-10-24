@@ -1,0 +1,21 @@
+.cloud {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 12 / 7;
+  transition: opacity 200ms var(--ease-out);
+}
+
+.cloud[data-loading="true"] {
+  opacity: 0.35;
+}
+
+.layout.layout {
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+}
+
+@media (max-width: 1100px) {
+  .layout.layout {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,104 @@
+.map {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 10px 16px;
+  align-items: center;
+}
+
+.rowLabel {
+  color: var(--ink-2);
+  font-size: 12.5px;
+  text-align: right;
+}
+
+.cells {
+  position: relative;
+  display: grid;
+  gap: 2px;
+  height: 28px;
+}
+
+.cell {
+  border-radius: 3px;
+  transition:
+    opacity 140ms var(--ease-out),
+    scale 140ms var(--ease-out);
+}
+
+.map[data-hover="true"] .cell {
+  opacity: 0.5;
+}
+
+.map[data-hover="true"] .cell[data-hot="true"] {
+  opacity: 1;
+  scale: 1 1.18;
+}
+
+.cut {
+  position: absolute;
+  top: -6px;
+  bottom: -6px;
+  width: 2px;
+  margin-left: -2px;
+  border-radius: 2px;
+  background: var(--ink);
+  pointer-events: none;
+}
+
+.axis {
+  display: flex;
+  justify-content: space-between;
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 11px;
+}
+
+.hover {
+  min-height: 58px;
+  margin-top: 20px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  background: var(--sunken);
+  color: var(--ink-2);
+  font-size: 13px;
+}
+
+.small {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 28px 24px;
+}
+
+.smallTitle {
+  margin: 0 0 2px;
+  font-size: 13px;
+  font-weight: 550;
+}
+
+.smallNote {
+  color: var(--ink-3);
+  font-family: var(--mono);
+  font-size: 11px;
+}
+
+.legends {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.themes.themes {
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+}
+
+@media (max-width: 1100px) {
+  .themes.themes {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Keeps its height so the legends below don't jump on hover */
+.hover[data-empty="true"] {
+  background: transparent;
+}

@@ -1,0 +1,45 @@
+.list {
+  position: relative;
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 12px;
+  background: var(--sunken);
+  border: 1px solid var(--border);
+}
+
+.tab {
+  position: relative;
+  z-index: 1;
+  padding: 6px 14px;
+  border: 0;
+  background: none;
+  border-radius: 9px;
+  color: var(--ink-2);
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 160ms var(--ease-out);
+}
+
+.tab[data-active] {
+  color: var(--ink);
+}
+
+/* Slides between tabs; Base UI sets the --active-tab-* variables */
+.indicator {
+  position: absolute;
+  top: var(--active-tab-top);
+  left: var(--active-tab-left);
+  width: var(--active-tab-width);
+  height: var(--active-tab-height);
+  border-radius: 9px;
+  background: var(--surface);
+  box-shadow:
+    0 1px 2px rgb(29 29 32 / 0.08),
+    0 0 0 1px var(--border);
+  transition:
+    left 240ms var(--ease-out),
+    width 240ms var(--ease-out);
+}

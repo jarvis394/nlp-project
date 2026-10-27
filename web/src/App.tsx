@@ -94,6 +94,15 @@ export function App() {
             <Skeleton height={90} />
             <Skeleton height={420} />
           </div>
+        ) : runs.isError ? (
+          <div className={s.page}>
+            <Empty title="Can't reach the API">
+              {runs.error.message}. Is <code>uv run app</code> running on port 8000?
+              <Button variant="primary" onClick={() => runs.refetch()}>
+                Retry
+              </Button>
+            </Empty>
+          </div>
         ) : !run ? (
           <div className={s.page}>
             <Empty title="No runs yet">

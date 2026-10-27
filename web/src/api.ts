@@ -98,7 +98,15 @@ export async function api<T>(path: string, init?: RequestInit): Promise<T> {
 
 const run = (r: string) => `/runs/${encodeURIComponent(r)}`;
 
-export const useRuns = () => useQuery({ queryKey: ["runs"], queryFn: () => api<Run[]>("/runs") });
+// The API boots slower than Vite (and restarts on --reload), so keep retrying
+// instead of settling on an error that reads as "no runs"
+export const useRuns = () =>
+  useQuery({
+    queryKey: ["runs"],
+    queryFn: () => api<Run[]>("/runs"),
+    retry: 10,
+    retryDelay: (n) => Math.min(500 * 2 ** n, 5000),
+  });
 
 export const useSnippets = (r: string) =>
   useQuery({ queryKey: ["snippets", r], queryFn: () => api<Snippet[]>(`${run(r)}/snippets`) });

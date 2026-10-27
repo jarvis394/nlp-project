@@ -22,19 +22,12 @@ just collect de Germany             # gl=de + geolocated to Germany
 just collect-ddgs uk-en             # Yahoo via ddgs
 just runs                           # list collected files
 
-# or do it from GUI, see step 7
+# or do it from GUI
 ```
 
 SerpAPI runs also keep the raw JSON responses in `data/raw/serpapi/<timestamp>/`, so
 a paid search is never lost. Google pages overlap slightly, so `rank` is the position
 among *unique* URLs (a run needs ~12 searches to get 100).
-
-
-### Plan
-
-| # | Task | Approach | Command |
-|---|------|----------|-----------------|
-| 8 | Literature review | ~1-page critical synthesis: from the deficit model → framing (Nisbet), fear vs efficacy appeals (O'Neill & Nicholson-Cole), the "consensus gap" & misinformation inoculation (van der Linden), the shift from "global warming" to "climate crisis/emergency", the rise of solutions/hope framing, and the effect of algorithmic curation (search/AI overviews). Tie back to what our data shows. | `docs/literature.md` |
 
 ### GUI
 
@@ -47,7 +40,9 @@ just web-lint     # oxlint + oxfmt check
 ```
 
 The API reads the same files as the notebook (`data/raw/*.xlsx`, `data/analysis/<run>/cache.jsonl`)
-and reuses `climate_mining.snippets` (steps 2–4) and `climate_mining.ranking` (step 6).
+and reuses `climate_mining.snippets` (steps 2-4) and `climate_mining.ranking` (step 6).
+
+You can also run a new collection request from the GUI.
 
 ### Notebook
 

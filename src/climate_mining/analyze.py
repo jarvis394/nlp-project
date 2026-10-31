@@ -147,7 +147,7 @@ def main(argv: list[str] | None = None) -> None:
         for row in df.itertuples():
             if row.url in cache:
                 continue
-            text = fetch_text(row.url)
+            text = fetch_text(str(row.url))
             source = "page" if text else "snippet"
             body = text[:MAX_CHARS] if text else str(row.snippet)
             content = f"Source: {source}\nTitle: {row.title}\nURL: {row.url}\n\n{body}"
@@ -156,9 +156,9 @@ def main(argv: list[str] | None = None) -> None:
             except Exception as e:  # keep going; failed rows can be re-run
                 print(f"#{row.rank} FAILED: {e}")
                 continue
-            rec = {"rank": int(row.rank), "url": row.url, "title": row.title,
+            rec = {"rank": int(row.rank), "url": row.url, "title": row.title, # type: ignore
                    "source": source, "model": model, **res}  # fmt: skip
-            cache[row.url] = rec
+            cache[row.url] = rec # type: ignore
             cache_file.write(json.dumps(rec, ensure_ascii=False) + "\n")
             cache_file.flush()
             print(
@@ -166,7 +166,7 @@ def main(argv: list[str] | None = None) -> None:
             )
             time.sleep(DELAY)
 
-    out = pd.DataFrame(sorted(cache.values(), key=lambda r: r["rank"]))
+    out = pd.DataFrame(sorted(cache.values(), key=lambda r: r["rank"])) # type: ignore
     out.to_excel(out_dir / "analysis.xlsx", index=False)
     print(f"{len(out)} pages analysed -> {out_dir / 'analysis.xlsx'}")
 

@@ -37,7 +37,7 @@ def topics(texts: pd.Series, vectors: np.ndarray, k: int = N_TOPICS) -> pd.Serie
     terms = np.array(tfidf.get_feature_names_out())
     names = {}
     for c in range(k):
-        weights = np.asarray(X[labels == c].mean(axis=0)).ravel()
+        weights = np.asarray(X[labels == c].mean(axis=0)).ravel() # type: ignore
         names[c] = " · ".join(terms[weights.argsort()[::-1][:3]])
     return pd.Series(labels, index=texts.index).map(names)
 
